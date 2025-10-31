@@ -5,6 +5,8 @@ local app_icons = require("helpers.app_icons")
 
 local spaces = {}
 
+sbar.add("event", "aerospace_workspace_change")
+
 for i = 1, 10, 1 do
   local space = sbar.add("space", "space." .. i, {
     space = i,
@@ -66,7 +68,7 @@ for i = 1, 10, 1 do
     }
   })
 
-  space:subscribe("space_change", function(env)
+  space:subscribe("aerospace_workspace_change", function(env)
     local selected = env.SELECTED == "true"
     local color = selected and colors.grey or colors.bg2
     space:set({
